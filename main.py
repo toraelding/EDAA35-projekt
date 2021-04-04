@@ -26,11 +26,16 @@ def load_json():
     return pd.DataFrame(results)
 
 
+def load_json2():
+    data = pd.read_json("http://api.scb.se/OV0104/v1/doris/sv/ssd/START/HE/HE0110/HE0110G/Tab4bDispInkN")
+    return pd.DataFrame(list(data['variables']))
+
+
 def load_csv():
     return pd.read_csv("data/data.csv")
 
 
 if __name__ == '__main__':
-    #json_data = load_json()
-    csv_data = load_csv()
-    print(csv_data)
+    json_data = load_json2()
+    #csv_data = load_csv()
+    print(json_data)
