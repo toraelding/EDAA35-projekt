@@ -32,10 +32,10 @@ def load_json2():
 
 
 def load_csv():
-    return pd.read_csv("data/data.csv")
+    return pd.read_csv("data/data.csv", encoding='unicode_escape')
 
 
 if __name__ == '__main__':
-    json_data = load_json2()
-    #csv_data = load_csv()
-    print(json_data)
+    #json_data = load_json2()
+    csv_data = load_csv()
+    print(csv_data)
