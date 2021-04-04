@@ -17,8 +17,6 @@ def load_json():
 
         results += json_data_part['results']
 
-
-
         # Loopa genom results lägga till en rad per objekt i dataframen
 
         # temp = pd.read_json()
@@ -29,14 +27,10 @@ def load_json():
 
 
 def load_csv():
-    # thing
-    data = pd.DataFrame
-    # ladda in fil
-    # gör till dataframe
-
-    pd.read_csv()
+    return pd.read_csv("data/data.csv")
 
 
 if __name__ == '__main__':
-    json_data = load_json()
-    print(json_data)
+    #json_data = load_json()
+    csv_data = load_csv()
+    print(csv_data)
