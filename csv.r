@@ -1,4 +1,4 @@
-data <- read.csv("data\\pag-sjp-diagnos-lan.csv")
+data <- read.csv("data\\data.csv")
 
 diagnoskapitel_kod <- data[[3]]
 
