@@ -1,9 +1,11 @@
 data <- read.csv("data\\data.csv")
 
-diagnoskapitel_kod <- data[[3]]
+table <- tapply(as.numeric(data$antal_man), list(data$ar,data$diagnoskapitel_text), sum)
 
-sorted <- sort(table(diagnoskapitel_kod), decreasing = TRUE)
+#diagnoskapitel_kod <- data[[3]]
 
-print(tail(diagnoskapitel_kod))
+#sorted <- sort(table(diagnoskapitel_kod), decreasing = TRUE)
 
-barplot(sorted)
+#print(tail(diagnoskapitel_kod))
+
+#barplot(sorted)
