@@ -2,7 +2,7 @@ import urllib.request, json
 import pandas as pd
 
 
-def load_json():
+def load_json2():
     results = []
     next_url = "https://catalog.forsakringskassan.se/rowstore/dataset/6733a920-64e4-44ac-b0a4-63138ab2c2cf/json"
 
@@ -26,9 +26,8 @@ def load_json():
     return pd.DataFrame(results)
 
 
-def load_json2():
-    data = pd.read_json("http://api.scb.se/OV0104/v1/doris/sv/ssd/START/HE/HE0110/HE0110G/Tab4bDispInkN")
-    return pd.DataFrame(list(data['variables']))
+def load_json():
+    return pd.read_json("data/data.json", encoding='unicode_escape')
 
 
 def load_csv():
@@ -36,6 +35,6 @@ def load_csv():
 
 
 if __name__ == '__main__':
-    #json_data = load_json2()
+    json_data = load_json()
     csv_data = load_csv()
-    print(csv_data)
+    print(json_data)
