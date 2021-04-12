@@ -6,6 +6,8 @@ read_csv <- function(file = "data\\data.csv") {
     data.frame(read.csv(file))
 }
 
+# borde testa att läsa in filer etc med xfun också, se om implementationen gör någon skillnad
+
 # table <- tapply(as.numeric(data$antal_man), list(data$ar,data$diagnoskapitel_text), sum)
 
 # print(head(table))
