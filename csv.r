@@ -1,9 +1,17 @@
 data <- read.csv("data\\data.csv")
 
-diagnoskapitel_kod <- data[[3]]
+my_list <- data[[3]] == "F00-F99"
+viss_diagnos <- as.numeric(!is.na(data[[11]][my_list]))
 
-sorted <- sort(table(diagnoskapitel_kod), decreasing = TRUE)
+print(head(data[[11]][my_list]))
+# my_sum <- !is.na(viss_diagnos)
+print(head(viss_diagnos))
+# print(sum(as.numeric(datka[[11]][my_sum])))
 
-print(tail(diagnoskapitel_kod))
+# diagnoskapitel_kod <- data[[3]]
 
-barplot(sorted)
+# sorted <- sort(table(diagnoskapitel_kod), decreasing = TRUE)
+
+# print(tail(diagnoskapitel_kod))
+
+# barplot(sorted)
