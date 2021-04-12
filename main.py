@@ -1,11 +1,10 @@
-import json
-
 import numpy as np
 import pandas as pd
-import time
+
 
 def load_json():
     return pd.read_json("data/data.json", encoding='unicode_escape')
+
 
 def load_json2():
     data = pd.read_json("http://api.scb.se/OV0104/v1/doris/sv/ssd/START/HE/HE0110/HE0110G/Tab4bDispInkN")
@@ -36,6 +35,7 @@ if __name__ == '__main__':
 
     data['andel_man'] = pd.to_numeric(data['andel_man'], errors='coerce')
     data['andel_kvinnor'] = pd.to_numeric(data['andel_kvinnor'], errors='coerce')
+
 
     rd = data.pivot_table(index=["ar","diagnoskapitel_text"], aggfunc=
     {
