@@ -1,8 +1,8 @@
-read_json <- function(file = "data\\data.json") {
+read_json <- function(file = "data.json") {
     jsonlite::fromJSON(file)
 }
 
-read_csv <- function(file = "data\\data.csv") {
+read_csv <- function(file = "data.csv") {
     data.frame(read.csv(file))
 }
 
