@@ -1,3 +1,5 @@
+library("microbenchmark")
+
 read_json <- function(file = "data.json") {
     jsonlite::fromJSON(file)
 }
@@ -6,7 +8,24 @@ read_csv <- function(file = "data.csv") {
     data.frame(read.csv(file))
 }
 
-# borde testa att läsa in filer etc med xfun också, se om implementationen gör någon skillnad
+input <- readline(prompt = "1: csv vs json, 2: r vs python ")
+
+if (input == 1) {
+    res <- microbenchmark(read_csv(), read_json(), times = 3L)
+
+    print(res)
+
+    boxplot(res)
+} else if (input == 2) {
+    # data <- read_csv()
+    # table <- tapply(as.numeric(data$antal_man), list(data$ar, data$diagnoskapitel_text), sum)
+    # print(head(table))
+}
+
+
+
+
+# borde testa att läsa in filer etc med 'xfun' också, se om implementationen gör någon skillnad
 
 # table <- tapply(as.numeric(data$antal_man), list(data$ar,data$diagnoskapitel_text), sum)
 
