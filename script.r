@@ -18,7 +18,11 @@ if (input == 1) {
 
     boxplot(res)
 } else if (input == 2) {
-    # data <- read_csv()
+    koder <- read.csv("koder.txt", header = FALSE)
+    print(koder)
+    data <- read_csv()
+
+    
     # table <- tapply(as.numeric(data$antal_man), list(data$ar, data$diagnoskapitel_text), sum)
     # print(head(table))
 }
