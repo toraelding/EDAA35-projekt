@@ -3,7 +3,7 @@ import pandas as pd
 
 
 def load_json():
-    return pd.read_json("data/data.json", encoding='unicode_escape')
+    return pd.read_json("data.json", encoding='unicode_escape')
 
 
 def load_json2():
@@ -12,7 +12,7 @@ def load_json2():
 
 
 def load_csv():
-    return pd.read_csv("data/data.csv", encoding='unicode_escape')
+    return pd.read_csv("data.csv", encoding='unicode_escape')
 
 
 def handle_data():
@@ -25,8 +25,16 @@ def handle_data():
 
 if __name__ == '__main__':
 
-    thing = bool(input())
-    if thing:
+    koder = [
+        "F00-F99",
+        "H00-H59",
+        "H60-H95"
+    ]
+
+    indices = ["diagnoskapitel_text"]
+
+    use_json = bool(input())
+    if use_json:
         data = load_json()
     else:
         data = load_csv()
@@ -35,11 +43,13 @@ if __name__ == '__main__':
 
     data['andel_man'] = pd.to_numeric(data['andel_man'], errors='coerce')
     data['andel_kvinnor'] = pd.to_numeric(data['andel_kvinnor'], errors='coerce')
+    data['antal_kvinnor'] = pd.to_numeric(data['antal_kvinnor'], errors='coerce')
+    data['antal_man'] = pd.to_numeric(data['antal_man'], errors='coerce')
 
-
-    rd = data.pivot_table(index=["ar","diagnoskapitel_text"], aggfunc=
+    rd = data[data.diagnoskapitel_kod.isin(koder)].pivot_table(index=indices, aggfunc=
     {
-        "antal": np.sum,
+        "antal_man": np.sum,
+        "antal_kvinnor": np.sum,
         'andel_man': np.mean,
         'andel_kvinnor': np.mean
     })
