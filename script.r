@@ -9,37 +9,24 @@ read_csv <- function(file = "data.csv") {
 }
 
 input <- readline(prompt = "1: csv vs json, 2: r vs python ")
+reps <- readline(prompt = "number of repetitions: ")
 
 if (input == 1) {
-    reps <- readline(prompt = "number of repetitions: ")
+    
     res <- microbenchmark(read_csv(), read_json(), times = reps)
 
     print(res)
 
     boxplot(res)
 } else if (input == 2) {
-    koder <- read.csv("koder.txt", header = FALSE)
-    print(koder)
-    data <- read_csv()
+    koder <- c("F00-F99", "H00-H59", "H60-H95")
+    data <- read_json()
 
+    analyse <- function() {
+        urval <- data[data$diagnoskapitel_kod %in% koder, ]
+        table <- tapply(suppressWarnings(as.numeric(urval$antal_man)), list(urval$diagnoskapitel_text), sum, na.rm = TRUE)
+    }
     
-    # table <- tapply(as.numeric(data$antal_man), list(data$ar, data$diagnoskapitel_text), sum)
-    # print(head(table))
+    res <- microbenchmark(analyse(), times = reps)
+    print(res)
 }
-
-
-
-
-# borde testa att läsa in filer etc med 'xfun' också, se om implementationen gör någon skillnad
-
-# table <- tapply(as.numeric(data$antal_man), list(data$ar,data$diagnoskapitel_text), sum)
-
-# print(head(table))
-
-#diagnoskapitel_kod <- data[[3]]
-
-#sorted <- sort(table(diagnoskapitel_kod), decreasing = TRUE)
-
-#print(tail(diagnoskapitel_kod))
-
-#barplot(sorted)
