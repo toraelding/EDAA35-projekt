@@ -11,13 +11,18 @@ read_csv <- function(file = "data.csv") {
 input <- readline(prompt = "1: csv vs json, 2: r vs python ")
 
 if (input == 1) {
-    res <- microbenchmark(read_csv(), read_json(), times = 3L)
+    reps <- readline(prompt = "number of repetitions: ")
+    res <- microbenchmark(read_csv(), read_json(), times = reps)
 
     print(res)
 
     boxplot(res)
 } else if (input == 2) {
-    # data <- read_csv()
+    koder <- read.csv("koder.txt", header = FALSE)
+    print(koder)
+    data <- read_csv()
+
+    
     # table <- tapply(as.numeric(data$antal_man), list(data$ar, data$diagnoskapitel_text), sum)
     # print(head(table))
 }
