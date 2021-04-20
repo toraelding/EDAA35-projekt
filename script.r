@@ -11,7 +11,8 @@ read_csv <- function(file = "data.csv") {
 input <- readline(prompt = "1: csv vs json, 2: r vs python ")
 
 if (input == 1) {
-    res <- microbenchmark(read_csv(), read_json(), times = 3L)
+    reps <- readline(prompt = "number of repetitions: ")
+    res <- microbenchmark(read_csv(), read_json(), times = reps)
 
     print(res)
 
